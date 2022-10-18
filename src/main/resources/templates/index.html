@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Mirzoiev-springboot-mongodb-angularjs</title>
+    <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-aria.js"></script>
+    <script src="https://rawgit.com/angular/bower-material/master/angular-material.js"></script>
+    <script th:src="@{/main.js}"></script>
+    <link th:href="@{/main.css}" rel="stylesheet"/>
+
+    <head>
+<body ng-app="FormCatalog" ng-controller="FormController">
+<h3>
+    CRUD: Form List
+</h3>
+<button onclick="hiddenOnClick()" class="create-button">Add profile</button>
+<div id="vis-profile" style="display: none;">
+    <form ng-submit="submitForm()">
+        <table border="0">
+            <tr>
+                <td>Lastname</td>
+                <td><input type="text" ng-model="formEntity.lastname"/></td>
+            </tr>
+            <tr>
+                <td>Firstname</td>
+                <td><input type="text" ng-model="formEntity.firstname"/></td>
+            </tr>
+            <tr>
+                <td>Secondname</td>
+                <td><input type="text" ng-model="formEntity.secondname"/></td>
+            </tr>
+            <tr>
+                <td>Birthday</td>
+                <td><input type="date" ng-model="formEntity.birthday"/></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select ng-model="formEntity.gender"
+                            ng-options="g.id as g.gender
+                                        for g in forms track by g.id">
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Profession</td>
+                <td>
+                    <select ng-model="formEntity.profession"
+                            ng-options="prof as prof
+                for prof in ((forms | filter:{'id':formEntity.gender})[0].profession) track by prof">
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit" class="create-button"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<br/>
+
+<script>
+    function hiddenOnClick() {
+        var profile = document.getElementById("vis-profile");
+        if (profile.style.display === "none") {
+            profile.style.display = "block";
+        } else {
+            profile.style.display = "none";
+        }
+    }
+</script>
+
+<br>
+<br>
+<table border="1">
+    <tr>
+        <th>Last name</th>
+        <th>First name</th>
+        <th>Middle name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!-- $scope.forms -->
+    <tr ng-repeat="formEntity in forms">
+        <td> {{ formEntity.lastname }}</td>
+        <td> {{ formEntity.firstname }}</td>
+        <td>{{ formEntity.secondname }}</td>
+        <td>
+            <a ng-click="editForm(formEntity)" class="edit-button">Edit</a>
+        </td>
+        <td>
+            <a ng-click="deleteForm(formEntity)" class="delete-button">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

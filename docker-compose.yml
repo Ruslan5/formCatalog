@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  springboot-mongodb:
+    build: .
+    restart: always
+    image: naresh240/springboot-mongodb:latest
+    container_name: springboot-mongodb
+    ports:
+      - "8080:8080"
+
+    links:
+      - mymongodb
+  mymongodb:
+    image: "mongo:4.4.3"
+    container_name: "mongodb"
+    ports:
+      - "27017:27017"
