@@ -16,7 +16,7 @@ implemented:
         ◦ Middle name
         ◦ Year of birth
         ◦ Gender
-        ◦ Occupation - drop-down list
+        ◦ Profession - drop-down list
         ◦ The values in the drop-down list change depending on the selected gender.
     • Save button
 
