@@ -16,27 +16,6 @@ public class FormService {
     @Autowired
     private FormRepository formRepository;
 
-//    private static List<FormEntity> items = new ArrayList<>();
-//
-//    static {
-//        List<String> femaleProfessions = new ArrayList<>();
-//        femaleProfessions.add("FEMALE_Profession_1");
-//        femaleProfessions.add("FEMALE_Profession_2");
-//        femaleProfessions.add("FEMALE_Profession_3");
-//
-//        List<String> maleProfessions = new ArrayList<>();
-//        maleProfessions.add("MALE_Profession_1");
-//        maleProfessions.add("MALE_Profession_2");
-//
-//        items.add(new FormEntity("lname1", "fname", "sname", "bdate", Gender.FEMALE, femaleProfessions));
-//        items.add(new FormEntity("lname4", "fname4", "sname4", "bdate4", Gender.MALE, maleProfessions));
-//    }
-//
-//    @PostConstruct
-//    public void init() {
-//        formRepository.saveAll(items);
-//    }
-
     public List<FormEntity> getAllFormList() {
         return formRepository.findAll();
     }
