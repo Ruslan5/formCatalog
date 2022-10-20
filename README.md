@@ -41,3 +41,5 @@ By the address
     http://localhost:8080/
 
 a working application will be available.
+
+![](https://github.com/Ruslan5/formCatalog/img/fcl.gif)
