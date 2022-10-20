@@ -42,4 +42,4 @@ By the address
 
 a working application will be available.
 
-![](https://github.com/Ruslan5/formCatalog/tree/main/img)
+![](https://github.com/Ruslan5/formCatalog/tree/main/img/fcl.gif)
