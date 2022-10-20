@@ -16,7 +16,7 @@ public class FormEntity {
     private String secondname;
     private String birthday;
     private Gender gender;
-    private List<String> profession;
+    private String profession;
 
     public FormEntity() {
     }
@@ -26,7 +26,7 @@ public class FormEntity {
                       String secondname,
                       String birthday,
                       Gender gender,
-                      List<String> profession) {
+                      String profession) {
 
         this.lastname = lastname;
         this.firstname = firstname;
@@ -85,11 +85,11 @@ public class FormEntity {
         this.gender = gender;
     }
 
-    public List<String> getProfession() {
+    public String getProfession() {
         return profession;
     }
 
-    public void setProfession(List<String> profession) {
+    public void setProfession(String profession) {
         this.profession = profession;
     }
 }

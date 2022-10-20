@@ -9,9 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Validated
 public class FormDto {
@@ -31,6 +29,8 @@ public class FormDto {
     @Past(message = "Past date exception")
     private Date birthday;
 
+    @NotNull
+    @NotBlank
     private String gender;
     @NotNull
     @NotBlank
@@ -126,9 +126,7 @@ public class FormDto {
         if ((formDTO.getGender().equalsIgnoreCase(String.valueOf(Gender.MALE)))) {
             form.setGender(Gender.MALE);
         }
-        List<String> professions = new ArrayList<>();
-        professions.add(formDTO.getProfession());
-        form.setProfession(professions);
+        form.setProfession(formDTO.getProfession());
         return form;
     }
 
@@ -145,10 +143,7 @@ public class FormDto {
         if ((formDTO.getGender().equalsIgnoreCase(String.valueOf(Gender.MALE)))) {
             form.setGender(Gender.MALE);
         }
-        List<String> professions = new ArrayList<>();
-        professions.add(formDTO.getProfession());
-        form.setProfession(professions);
+        form.setProfession(formDTO.getProfession());
         return form;
     }
-
 }

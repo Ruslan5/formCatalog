@@ -5,32 +5,35 @@ import com.github.cloudyrock.mongock.ChangeSet;
 import com.mirzoiev.formcatalog.entity.FormEntity;
 import com.mirzoiev.formcatalog.entity.Gender;
 import com.mirzoiev.formcatalog.repository.FormRepository;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Configuration
 @ChangeLog
 public class SpringBootConfig {
     @ChangeSet(order = "001", id = "seedDatabase", author = "Mir")
     public void seedDatabase(FormRepository formRepository) {
-        List<String> femaleProfessions = new ArrayList<>();
-        femaleProfessions.add("FEMALE_Profession_1");
-        femaleProfessions.add("FEMALE_Profession_2");
-        femaleProfessions.add("FEMALE_Profession_3");
 
-        List<String> maleProfessions = new ArrayList<>();
-        maleProfessions.add("MALE_Profession_1");
-        maleProfessions.add("MALE_Profession_2");
-
-        List<FormEntity> expenseList = new ArrayList<>();
-        expenseList.add(createNewEntity("lname1", "fname",
-                "sname", "bdate",
-                Gender.FEMALE, femaleProfessions));
-        expenseList.add(createNewEntity("lname4", "fname4",
+        List<FormEntity> initList = new ArrayList<>();
+        initList.add(createNewEntity("lname1", "fname1",
+                "sname1", "2001-01-01",
+                Gender.FEMALE, "FEMALE_Profession_1"));
+        initList.add(createNewEntity("lname2", "fname2",
+                "sname2", "2002-02-02",
+                Gender.FEMALE, "FEMALE_Profession_2"));
+        initList.add(createNewEntity("lname3", "fname3",
+                "sname3", "2003-03-03",
+                Gender.FEMALE, "FEMALE_Profession_3"));
+        initList.add(createNewEntity("lname4", "fname4",
                 "sname4", "bdate4",
-                Gender.MALE, maleProfessions));
+                Gender.MALE, "MALE_Profession_1"));
+        initList.add(createNewEntity("lname5", "fname5",
+                "sname5", "bdate5",
+                Gender.MALE, "MALE_Profession_2"));
 
-        formRepository.insert(expenseList);
+        formRepository.insert(initList);
     }
 
     private FormEntity createNewEntity(String lastname,
@@ -38,7 +41,7 @@ public class SpringBootConfig {
                                        String secondname,
                                        String birthday,
                                        Gender gender,
-                                       List<String> profession) {
+                                       String profession) {
         FormEntity entity = new FormEntity();
         entity.setLastname(lastname);
         entity.setFirstname(firstname);

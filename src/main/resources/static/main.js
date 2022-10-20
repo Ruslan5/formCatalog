@@ -13,6 +13,11 @@ app.controller("FormController", function($scope, $http) {
         profession: ""
 
     };
+    $scope.formList = angular.copy($scope.forms);
+
+    $scope.onGenderChange = function(){
+        $scope.formList = $filter('gender')($scope.forms, $scope.genderFilter)
+    };
 
     _refreshFormData();
 
@@ -95,6 +100,20 @@ app.controller("FormController", function($scope, $http) {
         $scope.formEntity.birthday = "";
         $scope.formEntity.gender = "";
         $scope.formEntity.profession = "";
+    };
+});
+app.filter('gender', function () {
+    return function(forms, gender){
+        if(!gender){
+            return forms;
+        }
+        var arr = [];
+        angular.forEach(forms, function(matchData){
+            if(matchData.gender === gender){
+                arr.push(matchData);
+            }
+        })
+        return arr;
     };
 });
 app.$inject = ['$scope'];

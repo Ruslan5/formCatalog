@@ -20,37 +20,38 @@
     <form ng-submit="submitForm()">
         <table border="0">
             <tr>
-                <td>Lastname</td>
+                <td>Last name</td>
                 <td><input type="text" ng-model="formEntity.lastname"/></td>
             </tr>
             <tr>
-                <td>Firstname</td>
+                <td>First name</td>
                 <td><input type="text" ng-model="formEntity.firstname"/></td>
             </tr>
             <tr>
-                <td>Secondname</td>
+                <td>Middle name</td>
                 <td><input type="text" ng-model="formEntity.secondname"/></td>
             </tr>
             <tr>
-                <td>Birthday</td>
+                <td>Date of Birth</td>
                 <td><input type="date" ng-model="formEntity.birthday"/></td>
             </tr>
             <tr>
                 <td>Gender</td>
                 <td>
-                    <select ng-model="formEntity.gender"
-                            ng-options="g.id as g.gender
-                                        for g in forms track by g.id">
+                    <select ng-model="formEntity.gender">
+                        <option value='MALE'>Male</option>
+                        <option value='FEMALE'>Female</option>
                     </select>
 
                 </td>
             </tr>
             <tr>
-                <td>Profession</td>
+                <td>PROFESSION</td>
                 <td>
                     <select ng-model="formEntity.profession"
-                            ng-options="prof as prof
-                for prof in ((forms | filter:{'id':formEntity.gender})[0].profession) track by prof">
+                            ng-options="user.profession as user.profession for user in forms
+                            | gender:formEntity.gender">
+                        {{user.profession}}
                     </select>
                 </td>
             </tr>
@@ -94,7 +95,7 @@
         <td> {{ formEntity.firstname }}</td>
         <td>{{ formEntity.secondname }}</td>
         <td>
-            <a  onclick="hiddenOnClick()" ng-click="editForm(formEntity)" class="edit-button">Edit</a>
+            <a onclick="hiddenOnClick()" ng-click="editForm(formEntity)" class="edit-button">Edit</a>
         </td>
         <td>
             <a ng-click="deleteForm(formEntity)" class="delete-button">Delete</a>
