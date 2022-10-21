@@ -33,7 +33,9 @@
             </tr>
             <tr>
                 <td>Date of Birth</td>
-                <td><input type="date" ng-model="formEntity.birthday"/></td>
+                <td><input type="date"
+                           value="{{dateFormat(formEntity.birthday)}}"
+                           ng-model="formEntity.birthday"/></td>
             </tr>
             <tr>
                 <td>Gender</td>

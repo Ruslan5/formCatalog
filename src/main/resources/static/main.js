@@ -19,6 +19,10 @@ app.controller("FormController", function($scope, $http) {
         $scope.formList = $filter('gender')($scope.forms, $scope.genderFilter)
     };
 
+    $scope.dateFormat=function(dte) {
+        $scope.formEntity.birthday = new Date($scope.formEntity.birthday);
+    }
+
     _refreshFormData();
 
     $scope.submitForm = function() {

@@ -25,7 +25,7 @@ public class FormDto {
     private String secondname;
 
     @NotNull(message = "date must not be null")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     @Past(message = "Past date exception")
     private Date birthday;
 
